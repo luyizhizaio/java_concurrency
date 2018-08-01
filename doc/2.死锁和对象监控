@@ -1,0 +1,113 @@
+1.死锁
+1.1.死锁的条件
+（1）Mutual exclusion: There is a resource which can be accessed only by one thread at any point in time.
+（2）Resource holding: While having locked one resource, the thread tries to acquire another lock on some other exclusive resource.
+（3）No preemption: There is no mechanism, which frees the resource if one threads holds the lock for a specific period of time.
+（4）Circular wait: During runtime a constellation occurs in which two (or more) threads are each waiting on the other thread to free a resource that it has locked.
+
+避免死锁的方法：
+Mutual exclusion: This is a requirement that often cannot be relaxed, as the resource has to be used exclusively. But this must no always be the case. When using DBMS systems, a possible solution instead of using a pessimistic lock on some table row that has to be updated, one can use a technique called Optimistic Locking.
+A possible solution to circumvent resource holding while waiting for another exclusive resource is to lock all necessary resources at the beginning of the algorithm and free all resources if it is not possible to obtain all locks. This is of course not always possible, maybe the resources to lock are not known ahead or it is just as waste of resources.
+If the lock cannot be obtained immediately, a possible solution to circumvent a possible deadlock is the introduction of a timeout. The SDK class ReentrantLock for example provides the possibility to specify a timeout for locking.
+As we have seen from the example code above, a deadlock does not appear if the sequence of lock requests does not differ between the different threads. This can be easily controlled if you are able to put all the locking code into one method where all threads have to pass through.
+
+1.2.饥饿
+
+
+
+2.wait和notify
+
+A common task in multi-threaded computing is to have some worker threads that are waiting for their producer to create some work for them.
+
+The wait() method that every object inherits from the java.lang.Object class can be used to pause the current thread execution and wait until another threads wakes us up using the notify() method.
+
+
+
+package com.kyrie.deadlockandobjectmonitor_2;
+
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
+/**
+ * Created by tend on 2018/8/1.
+ * The following code demonstrates how the wait() and notify() mechanism can be used to let the consumer threads wait for new work that is pushed into a queue from some producer thread:
+ *
+ */
+
+
+public class ConsumerProducer {
+    private static final Queue<Integer> queue = new ConcurrentLinkedQueue();
+    private static final long startMillis = System.currentTimeMillis();
+
+    public static class Consumer implements Runnable {
+
+        public void run() {
+            while (System.currentTimeMillis() < (startMillis + 10000)) {
+                synchronized (queue) {
+                    try {
+                        queue.wait();//等待生产者放好资源，被叫醒
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (!queue.isEmpty()) {
+                    Integer integer = queue.poll();
+                    System.out.println("[" + Thread.currentThread().getName() + "]: " + integer);
+                }
+            }
+        }
+    }
+
+    public static class Producer implements Runnable {
+
+        public void run() {
+            int i = 0;
+            while (System.currentTimeMillis() < (startMillis + 10000)) {
+                queue.add(i++);
+                synchronized (queue) {
+                    queue.notify();
+                }
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            //叫醒所有等待的线程，结束程序
+            synchronized (queue) {
+                queue.notifyAll();
+            }
+        }
+
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        Thread[] consumerThreads = new Thread[5];
+        for (int i = 0; i < consumerThreads.length; i++) {
+            consumerThreads[i] = new Thread(new Consumer(), "consumer-" + i);
+            consumerThreads[i].start();
+        }
+        Thread producerThread = new Thread(new Producer(), "producer");
+        producerThread.start();
+        for (int i = 0; i < consumerThreads.length; i++) {
+            consumerThreads[i].join();
+        }
+        producerThread.join();
+    }
+}
+
+
+2.1 带有 wait() 和 notify() 的嵌套同步块
+
+
+
+adding synchronized to the method signature is equal to creating a synchronized(this){} block.
+
+
+
+
+
+
+
+
+
+

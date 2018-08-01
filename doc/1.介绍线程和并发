@@ -1,0 +1,81 @@
+
+1.线程状态
+NEW: A thread that has not yet started is in this state.
+RUNNABLE: A thread executing in the Java virtual machine is in this state.
+BLOCKED: A thread that is blocked waiting for a monitor lock is in this state.
+WAITING: A thread that is waiting indefinitely for another thread to perform a particular action is in this state.
+TIMED_WAITING: A thread that is waiting for another thread to perform an action for up to a specified waiting time is in this state.
+TERMINATED: A thread that has exited is in this state.
+
+
+2.sleeping 和 interrupting(叫醒)
+
+
+
+
+4.join Thread
+
+
+5.Synchronization
+
+同步块：
+public void run() {
+	while (counter < 10) {
+		synchronized (SynchronizedCounter.class) { //jvm级别的
+			System.out.println("[" + Thread.currentThread().getName() + "] before: " + counter);
+			counter++;
+			System.out.println("[" + Thread.currentThread().getName() + "] after: " + counter);
+		}
+	}
+}
+
+
+（1）实例级别1
+If the variable is a member of the current class then all threads are synchronized regarding an instance of the class because the variable sync exists per instance of LocalSync:
+
+public class LocalSync {
+	private Integer sync = 0;
+
+	public void someMethod() {
+		synchronized (sync) {
+			// synchronized on instance level
+		}
+	}
+}
+
+（2）实例级别2
+Instead of creating a block that covers the whole body of the method, you can also add the keyword synchronized to the method signature. The code below has the same effect as the code above:
+
+public class MethodSync {
+	private Integer sync = 0;
+
+	public synchronized void someMethod() {
+		// synchronized on instance level
+	}
+}
+
+The main difference between the two approaches is the fact that the first one is finer grained, as you can make the synchronized block smaller than the method body. Please remember that synchronized blocks are executed only by one thread at a time, hence each synchronized block is a potential performance problem, as all concurrently running threads may have to wait until the current thread leaves the block. Hence we should always try to make the block as small as possible.
+
+（3）JVM级别
+Most often you will have to synchronize access to some resource that only exists once per JVM. The common means to do that is to use static member variable of a class:
+
+public class StaticSync {
+	private static Integer sync = 0;
+
+	public void someMethod() {
+		synchronized (sync) {
+			// synchronized on ClassLoader/JVM level
+		}
+	}
+}
+
+
+
+
+
+6.原子访问
+
+The Java language provides some basic operations that are atomic and that therefore can be used to make sure that concurrent threads always see the same value:
+
+（1）Read and write operations to reference variables and primitive variables (except long and double)
+（2）Read and write operations for all variables declared as volatile
