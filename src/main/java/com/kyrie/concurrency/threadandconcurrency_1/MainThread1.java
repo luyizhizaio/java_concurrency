@@ -1,4 +1,4 @@
-package com.kyrie.threadandconcurrency_1;
+package com.kyrie.concurrency.threadandconcurrency_1;
 
 /**
  * Created by tend on 2018/7/30.

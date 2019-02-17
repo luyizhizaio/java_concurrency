@@ -1,4 +1,4 @@
-package com.kyrie.deadlockandobjectmonitor_2;
+package com.kyrie.concurrency.deadlockandobjectmonitor_2;
 
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;

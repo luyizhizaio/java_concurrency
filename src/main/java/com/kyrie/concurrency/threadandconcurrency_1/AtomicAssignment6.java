@@ -1,4 +1,4 @@
-package com.kyrie.threadandconcurrency_1;
+package com.kyrie.concurrency.threadandconcurrency_1;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
