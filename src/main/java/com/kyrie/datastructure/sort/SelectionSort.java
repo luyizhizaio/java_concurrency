@@ -21,7 +21,7 @@ public class SelectionSort {
     }
 
     /**
-     * ¼òµ¥Ñ¡ÔñÅÅĞò
+     * ç®€å•é€‰æ‹©æ’åº
      */
     public static void selectSort(int[] arr){
 
@@ -29,7 +29,7 @@ public class SelectionSort {
         int temp;
         for(i = 0;i<arr.length;++i){
             k =i;
-            //´ÓÎŞĞòĞòÁĞÖĞÌô³öÒ»¸ö×îĞ¡µÄ¹Ø¼ü×Ö
+            //ä»æ— åºåºåˆ—ä¸­æŒ‘å‡ºä¸€ä¸ªæœ€å°çš„å…³é”®å­—
             for(j = i+1; j<arr.length;++j)
                 if(arr[k] >arr[j])
                     k=j;

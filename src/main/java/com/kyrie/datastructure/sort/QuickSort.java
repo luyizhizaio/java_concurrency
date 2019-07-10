@@ -10,10 +10,10 @@ public class QuickSort {
 
         int a[] = {3,7,5,4};
         QuickSort qs = new QuickSort();
-        System.out.print("³õÊ¼Öµ£º");
+        System.out.print("åˆå§‹å€¼ï¼š");
         qs.print(a);
         qs.quickSort(a,0,a.length-1);
-        System.out.print("ÅÅĞòºó£º");
+        System.out.print("æ’åºåï¼š");
         qs.print(a);
 
 

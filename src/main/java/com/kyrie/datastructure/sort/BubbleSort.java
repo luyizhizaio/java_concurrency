@@ -11,10 +11,10 @@ public class BubbleSort {
         int a[] = {3,7,5,4};
         BubbleSort bs = new BubbleSort();
 
-        System.out.print("³õÊ¼Öµ£º");
+        System.out.print("åˆå§‹å€¼ï¼š");
         bs.print(a);
         bs.bubbleSort(a, a.length);
-        System.out.print("ÅÅĞòºó£º");
+        System.out.print("æ’åºåï¼š");
         bs.print(a);
 
 

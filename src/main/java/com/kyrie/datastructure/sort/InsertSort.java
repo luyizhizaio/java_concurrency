@@ -1,7 +1,7 @@
 package com.kyrie.datastructure.sort;
 
 /**
- * ½»»»ÀàÅÅĞò
+ * äº¤æ¢ç±»æ’åº
  * Created by Kyrie on 2019/1/13.
  */
 public class InsertSort {
@@ -17,7 +17,7 @@ public class InsertSort {
     }
 
     /**
-     * Ö±½Ó²åÈëÅÅĞò
+     * ç›´æ¥æ’å…¥æ’åº
      * @param arr
      */
     public static void insertSort(int[] arr){
@@ -40,7 +40,7 @@ public class InsertSort {
     }
 
     /**
-     *Ï£¶ûÅÅĞò
+     *å¸Œå°”æ’åº
      * @param arr
      */
     public static void shellSort(int[] arr){

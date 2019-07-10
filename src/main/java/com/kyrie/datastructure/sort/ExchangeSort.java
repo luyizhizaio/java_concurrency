@@ -15,7 +15,7 @@ public class ExchangeSort {
 
 
     /**
-     * ¿ìËÙÅÅĞò
+     * å¿«é€Ÿæ’åº
      * @param arr
      */
     public static void quickSort(int [] arr, int low ,int high){
@@ -24,15 +24,15 @@ public class ExchangeSort {
         int i = low,j = high;
         if(low < high){
 
-            temp = arr[low]; //ÊàÖá
+            temp = arr[low]; //æ¢è½´
 
             while(i <j){
-                while(j>i && arr[j]>= temp) --j; //´ÓÓÒÏò×óÉ¨Ãè
+                while(j>i && arr[j]>= temp) --j; //ä»å³å‘å·¦æ‰«æ
                 if(i<j){
                     arr[i]=arr[j];
                     ++i;
                 }
-                while(i<j && arr[i] < temp) ++i; //´Ó×óÍùÓÒÉ¨Ãè
+                while(i<j && arr[i] < temp) ++i; //ä»å·¦å¾€å³æ‰«æ
                 if(i<j){
                     arr[j]=arr[i];
                     --j;
@@ -54,7 +54,7 @@ public class ExchangeSort {
     }
 
     /**
-     * Ã°ÅİÅÅĞò
+     * å†’æ³¡æ’åº
      * @param arr
      */
     public static void bubbleSort(int [] arr){

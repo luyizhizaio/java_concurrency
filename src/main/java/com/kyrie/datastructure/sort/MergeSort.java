@@ -1,7 +1,7 @@
 package com.kyrie.datastructure.sort;
 
 /**
- * ¶şÂ·¹é²¢ÅÅĞò
+ * äºŒè·¯å½’å¹¶æ’åº
  * Created by Kyrie on 2019/1/13.
  */
 public class MergeSort {
@@ -15,11 +15,11 @@ public class MergeSort {
 
         if(low < high){
             int mid = (low + high) /2;
-            //×ó±ß
+            //å·¦è¾¹
             mergeSort(arr,low ,mid);
-            //ÓÒ±ß
+            //å³è¾¹
             mergeSort(arr,mid+1,high);
-            //×óÓÒ¹é²¢
+            //å·¦å³å½’å¹¶
             merge(arr,low,mid,high);
         }
 
@@ -30,7 +30,7 @@ public class MergeSort {
 
 
     /**
-     * ºÏ²¢Á½¸öÓĞĞò ¡°ĞòÁĞ¡±
+     * åˆå¹¶ä¸¤ä¸ªæœ‰åº â€œåºåˆ—â€
      * @param a
      * @param low
      * @param mid
