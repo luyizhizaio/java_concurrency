@@ -7,8 +7,8 @@ public class QuickSort {
 
     public  static void main(String[]args){
 
-
-        int a[] = {3,7,5,4};
+        int[] a = {4,1,5,6,23,1,34,56,3,7,3,4,7,8,3,2,4,6,7,89,97,6,44,22,454,776,4,3,2,12};
+        //int a[] = {3,7,5,4,2,20,1,34,1,-1};
         QuickSort qs = new QuickSort();
         System.out.print("初始值：");
         qs.print(a);
@@ -23,7 +23,8 @@ public class QuickSort {
         print(a);
         if(low < high){
             int middle =getMiddle(a, low ,high);
-            quickSort(a,0,middle-1);
+            System.out.println("middle:"+middle);
+            quickSort(a,low,middle-1);
             quickSort(a, middle + 1, high);
         }
     }
