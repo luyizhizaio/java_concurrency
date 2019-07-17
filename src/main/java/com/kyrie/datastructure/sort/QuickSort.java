@@ -2,6 +2,7 @@ package com.kyrie.datastructure.sort;
 
 /**
  * Created by tend on 2017/6/15.
+ * 快排：挖坑分治法 ：https://blog.csdn.net/morewindows/article/details/6684558
  */
 public class QuickSort {
 
@@ -20,8 +21,10 @@ public class QuickSort {
     }
 
     private void quickSort(int[] a ,int low,int high){
-        print(a);
+
         if(low < high){
+            print(a);
+            System.out.println("low:"+low +",high:"+high);
             int middle =getMiddle(a, low ,high);
             System.out.println("middle:"+middle);
             quickSort(a,low,middle-1);
@@ -33,14 +36,14 @@ public class QuickSort {
 
         int key = a[low];
         while (low < high){
-            while(low <high && a[high] >=key){
+            while(low <high && a[high] >=key){//从右向左找 小于key的数
                 high --;
             }
-            a[low] =a[high];
-            while (low < high && a[low] <=key){
+            if(low <high) a[low++] =a[high];
+            while (low < high && a[low] < key){ //从左向右找 大于key的数
                 low ++;
             }
-            a[high] = a[low];
+            if(low <high) a[high--] = a[low];
         }
         a[low] =key;
         return low;
