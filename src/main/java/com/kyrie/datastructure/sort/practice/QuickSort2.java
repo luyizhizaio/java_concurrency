@@ -7,7 +7,7 @@ public class QuickSort2 {
 
 
     public static void main(String[] args) {
-
+//        int [] arr = {3,24,12,5,43,2};
         int[] arr = {4,1,5,6,23,1,34,56,3,7,3,4,7,8,3,2,4,6,7,89,97,6,44,22,454,776,4,3,2,12};
         quickSort(arr, 0, arr.length - 1);
         System.out.println("排序后：");
