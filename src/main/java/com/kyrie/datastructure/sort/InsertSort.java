@@ -1,41 +1,30 @@
 package com.kyrie.datastructure.sort;
 
 /**
- * 交换类排序
+ * 交换类排序:
  * Created by Kyrie on 2019/1/13.
  */
-public class InsertSort {
+public class InsertSort extends BaseSort {
 
     public static void main(String[] args){
 
-        int[] arr = {93,85,11,64,96,12,4};
+        Integer[] arr = {93,85,11,64,96,12,4};
         insertSort(arr);
-
-        shellSort(arr);
-
+        show(arr);
 
     }
 
     /**
      * 直接插入排序
-     * @param arr
+     * @param a
      */
-    public static void insertSort(int[] arr){
+    public static void insertSort(Comparable[] a){
 
-        int  i,j;
-        int temp;
-        for (i =1 ;i<arr.length;++i){
-            temp=arr[i];
-            j = i-1;
-
-            while(j>=0 && temp< arr[j]){
-                arr[j+1] =arr[j];
-                --j;
-            }
-            arr[j+1] = temp;
+        int N = a.length;
+        for(int i =1; i<N;i++){
+            for(int j=i ;j>0 && less(a[j],a[j-1]);j--)
+                exch(a,j,j-1);
         }
-
-        print(arr);
 
     }
 
