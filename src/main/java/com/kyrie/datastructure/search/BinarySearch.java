@@ -2,6 +2,8 @@ package com.kyrie.datastructure.search;
 
 /**
  * Created by tend on 2017/6/15.
+ * 二分查找：
+ *
  */
 public class BinarySearch {
 
