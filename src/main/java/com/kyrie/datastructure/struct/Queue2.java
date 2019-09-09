@@ -1,9 +1,9 @@
 package com.kyrie.datastructure.struct;
 
 /**
- * Á´¶ÓÁĞ
+ * é“¾é˜Ÿåˆ—
  * Created by Kyrie on 2017/7/20.
- * ¶ÓÁĞÏÈ½øÏÈ³ö £¨FIFO£©
+ * é˜Ÿåˆ—å…ˆè¿›å…ˆå‡º ï¼ˆFIFOï¼‰
  */
 public class Queue2 {
 
@@ -14,8 +14,8 @@ public class Queue2 {
 
     }
 
-    QNode front; //¶ÓÍ·ÒıÓÃ
-    QNode rear; //¶ÓÎ²ÒıÓÃ
+    QNode front; //é˜Ÿå¤´å¼•ç”¨
+    QNode rear; //é˜Ÿå°¾å¼•ç”¨
 
 
 

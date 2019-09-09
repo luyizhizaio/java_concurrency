@@ -2,8 +2,8 @@ package com.kyrie.datastructure.struct;
 
 /**
  * Created by Kyrie on 2017/7/18.
- * ÏßĞÔ±í£¨Êı×é£©£¬ÉùÃ÷¡¢´´½¨¡¢¸³Öµ¡¢±éÀú
- * Ôö¼ÓÔªËØ£¬ĞèÒª½«indexºóÃæµÄÒÀ´ÎÏòºóÒÆ¶¯£¬È»ºó½«Öµ²åÈëindexÎ»ÖÃ£¬É¾³ıÔò½«ºóÃæµÄÖµÒÀ´ÎÏòÇ°ÒÆ¶¯
+ * çº¿æ€§è¡¨ï¼ˆæ•°ç»„ï¼‰ï¼Œå£°æ˜ã€åˆ›å»ºã€èµ‹å€¼ã€éå†
+ * å¢åŠ å…ƒç´ ï¼Œéœ€è¦å°†indexåé¢çš„ä¾æ¬¡å‘åç§»åŠ¨ï¼Œç„¶åå°†å€¼æ’å…¥indexä½ç½®ï¼Œåˆ é™¤åˆ™å°†åé¢çš„å€¼ä¾æ¬¡å‘å‰ç§»åŠ¨
  */
 public class Array {
 
@@ -16,21 +16,21 @@ public class Array {
 
         traverse(value);
 
-        //ÏÂ±êÎª3µÄÎ»ÖÃ²åÈëÒ»¸öÔªËØ
+        //ä¸‹æ ‡ä¸º3çš„ä½ç½®æ’å…¥ä¸€ä¸ªå…ƒç´ 
         int[] newValue = insert(value,8,3);
 
         traverse(newValue);
 
-        //É¾³ı
+        //åˆ é™¤
         int[] newValue2 = delete(value,3);
         traverse(newValue2);
-        //²éÕÒ
+        //æŸ¥æ‰¾
         int index = findElem(value,3);
         System.out.println("index=" + index);
     }
 
     /**
-     * ²éÕÒ
+     * æŸ¥æ‰¾
      * @param arr
      * @param e
      * @return
@@ -49,7 +49,7 @@ public class Array {
 
 
     /**
-     * Ö¸¶¨Î»ÖÃ²åÈëÔªËØ
+     * æŒ‡å®šä½ç½®æ’å…¥å…ƒç´ 
      * @param old
      * @param value
      * @param index
@@ -77,7 +77,7 @@ public class Array {
 
 
     /**
-     * ´òÓ¡ÔªËØ
+     * æ‰“å°å…ƒç´ 
      * @param data
      */
     public static void traverse(int data[]){
