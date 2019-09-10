@@ -1,13 +1,16 @@
 package com.kyrie.datastructure.struct;
 
 import java.util.Arrays;
+import java.util.Iterator;
+import java.util.Spliterator;
+import java.util.function.Consumer;
 
 /**
  * 顺序循环队列（循环队列防止假溢出）
  * Created by Kyrie on 2017/7/20.
  * 队列先进先出 （FIFO）
  */
-public class Queue<T> {
+public class Queue<T> implements Iterable<T> {
 
     private int DEFAULT_SIZE = 10;
 
@@ -117,4 +120,18 @@ public class Queue<T> {
     }
 
 
+    @Override
+    public Iterator<T> iterator() {
+        return null;
+    }
+
+    @Override
+    public void forEach(Consumer<? super T> action) {
+
+    }
+
+    @Override
+    public Spliterator<T> spliterator() {
+        return null;
+    }
 }

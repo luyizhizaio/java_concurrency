@@ -1,5 +1,8 @@
 package com.kyrie.datastructure.search;
 
+
+import com.kyrie.datastructure.struct.Queue;
+
 /**
  * Created by tend on 2019/9/6.
  * 平行数组实现二分查找
@@ -31,7 +34,7 @@ public class BinarySearchST<Key extends Comparable<Key>,Value> {
     }
 
     /**
-     * 返回key应该在keys中的位置
+     * 非递归：返回key应该在keys中的位置
      * @param key
      * @return
      */
@@ -46,6 +49,24 @@ public class BinarySearchST<Key extends Comparable<Key>,Value> {
         }
         return lo;
     }
+
+    /**
+     * 递归版本的方法
+     * @return
+     */
+    public int rank(Key key,int lo , int hi){
+        if(hi < lo)return lo;
+        int mid=lo +(hi-lo)/2;
+        int cmp = key.compareTo(keys[mid]);
+        if(cmp < 0){
+            return rank(key,lo,mid-1);
+        }else if(cmp > 0){
+            return rank(key,mid+1,hi);
+        }else{
+            return mid;
+        }
+    }
+
 
     public void put(Key key,Value val){
         int i = rank(key);
@@ -65,7 +86,53 @@ public class BinarySearchST<Key extends Comparable<Key>,Value> {
 
     public void delete(Key key){
         //TODO
+        int i = rank(key);
+        if(i < N && keys[i].compareTo(key) == 0){
+            for(;i<N; i ++ ){
+                keys[i] = keys[i+1];
+                vals[i] = vals[i+1];
+            }
+
+        }
+
     }
+
+    public Key min(){
+        return keys[0];
+    }
+    public Key max(){
+        return keys[N-1];
+    }
+
+    public Key select(int k){
+        return keys[k];
+    }
+
+    /**
+     * 比key小一位的key
+     * @param key
+     * @return
+     */
+    public Key ceiling(Key key){
+        int i = rank(key);
+        return keys[i];
+    }
+    public Iterable<Key> keys(Key lo,Key hi){
+        Queue<Key> q = new Queue<Key>();
+        for(int i =rank(lo) ; i < rank(hi);i++){
+            q.enQueue(keys[i]);
+        }
+        if(contain(hi)){
+            q.enQueue(keys[rank(hi)]);
+        }
+        return q;
+    }
+
+
+    public boolean contain(Key key){
+        return get(key) != null ;
+    }
+
 
 
     public static void main(String[] args) {
@@ -85,7 +152,12 @@ public class BinarySearchST<Key extends Comparable<Key>,Value> {
 
 
         System.out.println("L:" + bs.get("L"));
+        System.out.println("A:" + bs.rank("A"));
 
+        bs.delete("H");
+
+
+        System.out.println("H:" + bs.get("H"));
 
     }
 
