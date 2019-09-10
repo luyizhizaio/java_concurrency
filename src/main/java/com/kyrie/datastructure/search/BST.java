@@ -225,6 +225,19 @@ public class BST<Key extends Comparable<Key>,Value> {
         print(x.right);
     }
 
+
+    public Iterable<Key> keys(){
+        return keys(min(),max());
+    }
+
+    private Iterable<Key> keys(Key lo, Key hi) {
+
+
+        return null;
+
+    }
+
+
     public static void main(String[] args) {
 
         BST<String,Integer> bst= new BST<String,Integer>();
