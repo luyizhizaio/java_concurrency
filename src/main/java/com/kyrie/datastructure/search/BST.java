@@ -1,5 +1,7 @@
 package com.kyrie.datastructure.search;
 
+import com.kyrie.datastructure.struct.Queue;
+
 /**
  * Created by tend on 2019/9/10.
  * 二叉查找树
@@ -230,10 +232,27 @@ public class BST<Key extends Comparable<Key>,Value> {
         return keys(min(),max());
     }
 
-    private Iterable<Key> keys(Key lo, Key hi) {
+    /**
+     * 根据范围查找key，
+     * @param lo
+     * @param hi
+     * @return
+     */
+    public Iterable<Key> keys(Key lo, Key hi) {
+        Queue<Key> queue = new Queue<Key>();
+        keys(root,queue,lo,hi);
 
+        return queue;
+    }
 
-        return null;
+    private void keys(Node x, Queue<Key> queue, Key lo, Key hi) {
+        //通过左-根-右的顺序进行中根遍历，把符合条件节点放入队列。
+        if(x == null) return;
+        int cmplo = lo.compareTo(x.key);
+        int cmphi = hi.compareTo(x.key);
+        if(cmplo < 0) keys(x.left,queue,lo,hi);
+        if(cmplo<=0 && cmphi>=0) queue.enQueue(x.key);
+        if(cmphi >0) keys(x.right,queue,lo,hi);
 
     }
 
@@ -260,7 +279,7 @@ public class BST<Key extends Comparable<Key>,Value> {
         System.out.println("ceiling:" + bst.ceiling("I"));
 
 
-        System.out.println("select:" + bst.select(3));
+      /*  System.out.println("select:" + bst.select(3));
         System.out.println("rank:" + bst.rank("H"));
         bst.print(bst.root);
         // delete min
@@ -273,7 +292,11 @@ public class BST<Key extends Comparable<Key>,Value> {
         bst.delete("H");
         System.out.println("rank:" + bst.rank("H"));
 
-        bst.print(bst.root);
+        bst.print(bst.root);*/
+
+
+        bst.keys();
+
     }
 
 }
