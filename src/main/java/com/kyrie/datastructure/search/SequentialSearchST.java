@@ -33,8 +33,8 @@ public class SequentialSearchST<Key,Value> {
             if(key.equals(x.key)){
                 x.val = val; return;
             }
-            first = new Node(key,val,first);//未命中，新建节点，头插法
         }
+        first = new Node(key,val,first);//未命中，新建节点，头插法
     }
 
     public int size(){
@@ -51,7 +51,11 @@ public class SequentialSearchST<Key,Value> {
         for(Node x = first; x!=null;x=x.next){
 
             if(key.equals(x.key)){
-                pre.next = x.next;
+                if(pre!=null){
+                    pre.next = x.next;
+                }else{
+                    first =null;
+                }
             }
             pre = x;
         }
