@@ -129,6 +129,14 @@ public class RedBlackBST<Key extends Comparable<Key>,Value> {
         else return x.val;
     }
 
+    public boolean contains(Key key){
+
+        Value val = get(key);
+        if(val == null) return false;
+        else return true;
+
+    }
+
     public static void main(String[] args) {
 
         RedBlackBST<String,Integer> bst= new RedBlackBST<String,Integer>();
@@ -147,6 +155,8 @@ public class RedBlackBST<Key extends Comparable<Key>,Value> {
         int xx = bst.get("D");
         System.out.println("xx:"+xx);
 
+        System.out.println("D:"+bst.contains("D"));
+        System.out.println("A:"+bst.contains("A"));
 
 
     }
