@@ -37,6 +37,17 @@ public class SeparateChainHashST<Key,Value> {
         st[hash(key)].delete(key);
     }
 
+    public int size(){
+        return 0;
+    }
+
+
+    public boolean contains(Key i) {
+
+        return false;
+    }
+
+
     public static void main(String[] args) {
 
         SeparateChainHashST<String,Integer> bst= new SeparateChainHashST<String,Integer>();
@@ -58,5 +69,6 @@ public class SeparateChainHashST<Key,Value> {
         System.out.println("D:"+bst.get("D"));
 
     }
+
 
 }

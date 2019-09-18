@@ -84,7 +84,7 @@ public class LinearProbingHashST<Key,Value> {
         if(N >0 && N == M/8) resize(M/2);
     }
 
-    private boolean contains(Key key) {
+    public boolean contains(Key key) {
 
         for (int i = 0; i < keys.length ; i++) {
             if(keys[i].equals(key)) return true;
@@ -92,8 +92,21 @@ public class LinearProbingHashST<Key,Value> {
         return false;
     }
 
+
+
+    public int size() {
+        return N;
+    }
+
+    public Key[] keys() {
+        return keys;
+    }
+
+
+
     public static void main(String[] args) {
 
     }
+
 
 }
