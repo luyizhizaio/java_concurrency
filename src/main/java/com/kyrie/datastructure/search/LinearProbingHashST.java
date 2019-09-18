@@ -8,7 +8,7 @@ public class LinearProbingHashST<Key,Value> {
 
 
     private int N; //符号表这种键值对的总数
-    private int M; //表的总大小
+    private int M =20; //表的总大小
     private Key[] keys;
     private Value[] vals;
 

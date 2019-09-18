@@ -33,8 +33,8 @@ public class SparseVector {
      */
     public double dot(double[] that){
         double sum = 0.0;
-        for(int i: st.keys()){
-            sum += that[i]*this.get(i);
+        for(Object i: st.keys()){
+            sum += that[(int)i] * this.get((int)i);
         }
         return sum;
 
@@ -44,17 +44,32 @@ public class SparseVector {
     public static void main(String[] args) {
 
         int N =2;
-
+        //稀疏矩阵与向量的乘法
         SparseVector [] a;
         a = new SparseVector[N];
-        double[] x = new double[N];
-        double[] b = new double[N];
 
 
+        SparseVector a0 = new SparseVector();
+        SparseVector a1 = new SparseVector();
+
+        a0.put(0, 1.0);
+        a0.put(1, 2.0);
+
+        a1.put(0, 2.0);
+        a1.put(1, 2.0);
+
+        a[0] = a0;
+        a[1] = a1;
+
+
+        double[] x = {1.0,2.0};
+        double[] b = {2.0,2.0};
 
         for(int i = 0; i< N;i++){
             b[i] = a[i].dot(x);
         }
+
+        System.out.println(b);
 
     }
 
