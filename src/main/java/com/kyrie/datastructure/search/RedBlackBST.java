@@ -98,7 +98,7 @@ public class RedBlackBST<Key extends Comparable<Key>,Value> {
         }
         int cmp = key.compareTo(h.key);
         if (cmp < 0 )h.left = put(h.left,key,val);
-        if(cmp > 0) h.right = put(h.right,key,val);
+        else if(cmp > 0) h.right = put(h.right,key,val);
         else h.val = val;
 
         if(isRed(h.right) && !isRed(h.left)) h = rotateLeft(h);

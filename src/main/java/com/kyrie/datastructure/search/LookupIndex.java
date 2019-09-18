@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 /**
  * Created by tend on 2019/9/17.
+ * 正序索引和反序索引
  */
 public class LookupIndex {
 
@@ -20,8 +21,10 @@ public class LookupIndex {
         BufferedReader reader = null;
 //        String sp = args[1];
         String sp = ",";
-
+        //正序索引
         RedBlackBST<String,Queue<String>> st = new RedBlackBST<String,Queue<String>>();
+
+        //反序索引
         RedBlackBST<String,Queue<String>> ts = new RedBlackBST<String,Queue<String>>();
 
         try {
@@ -54,7 +57,7 @@ public class LookupIndex {
             while(true) {
                 String query = scanner.nextLine();
                 if(query.equals("exit")) break;
-                System.out.println(">>>" + query);
+                System.out.println(">>>：" + query);
 
 
                 if(st.contains(query)){
