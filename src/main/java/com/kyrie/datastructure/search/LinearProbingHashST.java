@@ -98,7 +98,7 @@ public class LinearProbingHashST<Key,Value> {
         return N;
     }
 
-    public Key[] keys() {
+    public Object[] keys() {
         return keys;
     }
 
