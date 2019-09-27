@@ -1,5 +1,10 @@
 package com.kyrie.datastructure.graph;
 
+import com.kyrie.datastructure.utils.In;
+
+import java.awt.font.GlyphMetrics;
+import java.io.File;
+
 /**
  * Created by tend on 2019/9/25.
  * 找到与起点s联通的所有顶点
@@ -8,6 +13,7 @@ public class Search {
 
     private Graph G;
     private int s;
+    private DepthFirstSearch dfs;
 
     /**
      * 构造函数
@@ -17,6 +23,7 @@ public class Search {
     public Search(Graph G, int s){
         this.G=G;
         this.s=s;
+        dfs = new DepthFirstSearch(G,s);
     }
 
     /**
@@ -28,9 +35,7 @@ public class Search {
         /**
          * 使用深度优先搜索（DFS）
          */
-
-
-        return false;
+        return dfs.marked(v);
     }
 
     /**
@@ -38,8 +43,9 @@ public class Search {
      * @return
      */
     public int count (){
-
-        return 0;
+        return dfs.count();
     }
+
+
 
 }
