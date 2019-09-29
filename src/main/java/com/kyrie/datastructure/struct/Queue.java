@@ -16,7 +16,7 @@ public class Queue<T> implements Iterable<T> {
 
     private int capacity;
 
-    private Object[] data; //数组保存元素
+    private T[] data; //数组保存元素
 
     private int front = 0;
 
@@ -25,7 +25,7 @@ public class Queue<T> implements Iterable<T> {
     public Queue(){
 
         capacity = DEFAULT_SIZE;
-        data = new Object[capacity];
+        data = (T[])new Object[capacity];
     }
 
     public Queue(T element){
@@ -37,7 +37,7 @@ public class Queue<T> implements Iterable<T> {
     public Queue(T element , int initSize){
 
         this.capacity = initSize;
-        data = new Object[capacity];
+        data =(T[]) new Object[capacity]; //不能创建泛型数组。创建Object数组强转成泛型数组。
         ++ rear;
         data[rear] = element;
     }
