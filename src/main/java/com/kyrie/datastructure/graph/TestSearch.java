@@ -13,7 +13,7 @@ public class TestSearch {
     public static void main(String[] args) {
         In in = new In(new File("data/tinyG.txt")); //读入文件流
         Graph G = new Graph(in);
-        Search search = new Search(G,0);
+        Search search = new Search(G,8);
 
         for (int v = 0; v < G.V(); v++) {
             if(search.Marked(v)){
