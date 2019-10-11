@@ -1,4 +1,4 @@
-package com.kyrie.datastructure.struct;
+package com.kyrie.datastructure.struct.linkedlist;
 
 import java.util.Iterator;
 
@@ -6,7 +6,7 @@ import java.util.Iterator;
  * Created by tend on 2019/10/11.
  * 链表实现队列：first指向队列开头，last指向队列结尾
  */
-public class QueueByLinkedList<Item> implements Iterable<Item>  {
+public class Queue<Item> implements Iterable<Item>  {
 
     private Node first;//指向队列开头,也指向链表表头
     private Node last;//
@@ -79,7 +79,7 @@ public class QueueByLinkedList<Item> implements Iterable<Item>  {
 
     public static void main(String[] args) {
 
-        QueueByLinkedList<String> queue = new QueueByLinkedList<String>();
+        Queue<String> queue = new Queue<String>();
         queue.enqueue("HELLO");
         queue.enqueue("WORLD");
         queue.enqueue("WORLD2");

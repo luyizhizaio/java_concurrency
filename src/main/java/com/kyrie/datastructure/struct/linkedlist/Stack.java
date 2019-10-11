@@ -1,4 +1,4 @@
-package com.kyrie.datastructure.struct.stack;
+package com.kyrie.datastructure.struct.linkedlist;
 
 import java.util.Iterator;
 
@@ -6,7 +6,7 @@ import java.util.Iterator;
  * Created by tend on 2019/10/10.
  * 使用链表实现栈，表头为栈顶。
  */
-public class StackByLinkedList<Item> implements Iterable<Item>  {
+public class Stack<Item> implements Iterable<Item>  {
 
     private Node first;
     private int N;
@@ -72,7 +72,7 @@ public class StackByLinkedList<Item> implements Iterable<Item>  {
 
     public static void main(String[] args) {
 
-        StackByLinkedList<String> stack = new StackByLinkedList<String>();
+        Stack<String> stack = new Stack<String>();
         stack.push("HELLO");
         stack.push("WORLD");
         System.out.println("size:"+stack.size());

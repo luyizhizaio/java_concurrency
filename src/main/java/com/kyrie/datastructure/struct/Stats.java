@@ -1,5 +1,6 @@
 package com.kyrie.datastructure.struct;
 
+import com.kyrie.datastructure.struct.linkedlist.Bag;
 import com.kyrie.datastructure.utils.StdIn;
 import com.kyrie.datastructure.utils.StdOut;
 

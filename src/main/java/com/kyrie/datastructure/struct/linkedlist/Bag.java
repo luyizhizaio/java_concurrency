@@ -1,4 +1,4 @@
-package com.kyrie.datastructure.struct;
+package com.kyrie.datastructure.struct.linkedlist;
 
 import com.kyrie.datastructure.utils.StdIn;
 import com.kyrie.datastructure.utils.StdOut;

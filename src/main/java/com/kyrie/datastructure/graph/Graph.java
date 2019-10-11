@@ -1,8 +1,7 @@
 package com.kyrie.datastructure.graph;
 
-import com.kyrie.datastructure.struct.Bag;
+import com.kyrie.datastructure.struct.linkedlist.Bag;
 import com.kyrie.datastructure.utils.In;
-import com.kyrie.datastructure.utils.StdIn;
 
 import java.io.File;
 
