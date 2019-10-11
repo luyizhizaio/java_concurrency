@@ -3,7 +3,7 @@ package com.kyrie.datastructure.struct;
 /**
  * Created by Kyrie on 2017/7/18.
  *
- * ´øÍ·½áµãµÄµ¥Á´±í£º³ıÁËÍ·½Úµã£¬Ã¿¸ö½Úµã°üº¬Ò»¸öÊı¾İÓòÒ»¸öÖ¸ÕëÓò£¬³ıÁËÍ·¡¢Î²½Úµã£¬Ã¿¸ö½ÚµãµÄÖ¸ÕëÖ¸ÏòÏÂÒ»¸ö½Úµã
+ * å¸¦å¤´ç»“ç‚¹çš„å•é“¾è¡¨ï¼šé™¤äº†å¤´èŠ‚ç‚¹ï¼Œæ¯ä¸ªèŠ‚ç‚¹åŒ…å«ä¸€ä¸ªæ•°æ®åŸŸä¸€ä¸ªæŒ‡é’ˆåŸŸï¼Œé™¤äº†å¤´ã€å°¾èŠ‚ç‚¹ï¼Œæ¯ä¸ªèŠ‚ç‚¹çš„æŒ‡é’ˆæŒ‡å‘ä¸‹ä¸€ä¸ªèŠ‚ç‚¹
  */
 public class LinkedList<T> {
 
@@ -38,7 +38,7 @@ public class LinkedList<T> {
 
 
 
-    //´òÓ¡Á´±í
+    //æ‰“å°é“¾è¡¨
     public  void traverse(){
         if (isEmpty()){
             System.out.println("null");
@@ -49,7 +49,7 @@ public class LinkedList<T> {
     }
 
     /**
-     * Í·²å·¨¹¹ÔìÁ´±í
+     * å¤´æ’æ³•æ„é€ é“¾è¡¨
      * @param item
      */
     public void addFromHead(T item){
@@ -59,13 +59,13 @@ public class LinkedList<T> {
     }
 
     /**
-     * Î²²å·¨¹¹ÔìÁ´±í
+     * å°¾æ’æ³•æ„é€ é“¾è¡¨
      * @param item
      */
     public void addFromTail(T item){
         Node<T> newNode = new Node<T>(item);
         Node<T> p = head;
-        while(p.next !=null) //ÕÒµ½pµÄÎ²²¿
+        while(p.next !=null) //æ‰¾åˆ°pçš„å°¾éƒ¨
             p = p.next;
         p.next = newNode;
         newNode.next = null;
@@ -78,7 +78,7 @@ public class LinkedList<T> {
     }
 
     /**
-     * ´ÓÎ²²¿ÒÆ³ı
+     * ä»å°¾éƒ¨ç§»é™¤
      */
     public void removeFromTail(){
         Node<T> prev = null, curr = head;
@@ -93,7 +93,7 @@ public class LinkedList<T> {
     }
 
     /**
-     * ÔÚÖ¸¶¨µÄÔªËØºóÃæµÄ²åÈë
+     * åœ¨æŒ‡å®šçš„å…ƒç´ åé¢çš„æ’å…¥
      * @param appointedItem
      * @param item
      * @return
@@ -134,7 +134,7 @@ public class LinkedList<T> {
     public int indexOf(T item){
         int index = 0;
         Node<T> p;
-        for(p = head.next; p!=null; p = p.next){ //±éÀúÁ´±í
+        for(p = head.next; p!=null; p = p.next){ //éå†é“¾è¡¨
             if(item.equals(p.data))
                 return index;
             index ++;
@@ -159,7 +159,7 @@ public class LinkedList<T> {
        C = A;
        C.next = null;
 
-       r=C; //´ËÊ±rºÍCÖ¸ÏòÍ¬Ò»¸ö½áµã
+       r=C; //æ­¤æ—¶rå’ŒCæŒ‡å‘åŒä¸€ä¸ªç»“ç‚¹
        while (p !=null && q!=null){
 
            if(p.data <= q.data){
