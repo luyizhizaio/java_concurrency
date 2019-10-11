@@ -4,7 +4,7 @@ import java.util.Iterator;
 
 /**
  * Created by tend on 2019/9/29.
- *
+ * 实现可变数组栈
  */
 public class ResizingArrayStack<Item> implements Iterable<Item> {
 
@@ -47,10 +47,10 @@ public class ResizingArrayStack<Item> implements Iterable<Item> {
         return new ReverseArrayIterator();
     }
 
-    private int i = N;
+
 
     private class ReverseArrayIterator implements  Iterator<Item>{
-
+        private int i = N;
         @Override
         public boolean hasNext() {
             return  i > 0;
