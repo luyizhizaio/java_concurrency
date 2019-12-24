@@ -17,11 +17,11 @@ public class SelectionSort extends BaseSort {
     public static void sort(Comparable[] cp){
 
         for(int i=0 ; i<cp.length ; i++){
-            int  tmp = i;
+            int  min = i;
             for(int j=i+1 ; j< cp.length ; j++) {
-                if (less(cp[j],cp[tmp])) tmp = j; //选择值最小的index
+                if (less(cp[j],cp[min])) min = j; //选择值最小的index
             }
-            exch(cp , i ,tmp);
+            exch(cp , i ,min);
         }
 
 
