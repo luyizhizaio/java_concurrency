@@ -5,7 +5,7 @@ package com.kyrie.datastructure.sort;
  * Created by Kyrie on 2019/1/13.
  * 思想：整理桥牌，无序的元素插入有序的数组
  */
-public class InsertSort extends BaseSort {
+public class Insertion extends BaseSort {
 
     public static void main(String[] args){
 
