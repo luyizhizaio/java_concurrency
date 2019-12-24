@@ -2,46 +2,29 @@ package com.kyrie.datastructure.sort;
 
 /**
  * Created by Kyrie on 2019/1/13.
+ * 选择排序思想：选择数组中最小的元素与 索引为0，1，2，3...换位置
  */
-public class SelectionSort {
+public class SelectionSort extends BaseSort {
 
     public static void main(String[] args){
 
-        int[] arr = {14,2,93,85,11,64,96,12,4};
-        selectSort(arr);
+        Integer[] arr = {14,2,93,85,11,64,96,12,2,4};
+        sort(arr);
+        show(arr);
     }
 
 
+    public static void sort(Comparable[] cp){
 
-    public static void print(int a[]){
-        for(int i=0;i<a.length;i++){
-            System.out.print(a[i]+" ");
-        }
-        System.out.println();
-    }
-
-    /**
-     * 简单选择排序
-     */
-    public static void selectSort(int[] arr){
-
-        int i,j,k;
-        int temp;
-        for(i = 0;i<arr.length;++i){
-            k =i;
-            //从无序序列中挑出一个最小的关键字
-            for(j = i+1; j<arr.length;++j)
-                if(arr[k] >arr[j])
-                    k=j;
-            temp = arr[i];
-            arr[i] = arr[k];
-            arr[k] = temp;
+        for(int i=0 ; i<cp.length ; i++){
+            int  tmp = i;
+            for(int j=i+1 ; j< cp.length ; j++) {
+                if (less(cp[j],cp[tmp])) tmp = j; //选择值最小的index
+            }
+            exch(cp , i ,tmp);
         }
 
-        print(arr);
 
     }
-
-
 
 }
