@@ -2,6 +2,7 @@ package com.kyrie.datastructure.sort;
 
 /**
  * Created by Kyrie on 2019/1/13.
+ * 1.选择排序
  * 选择排序思想：选择数组中最小的元素与 索引为0，1，2，3...换位置
  */
 public class SelectionSort extends BaseSort {
