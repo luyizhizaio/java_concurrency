@@ -5,7 +5,7 @@ package com.kyrie.datastructure.sort;
  */
 public class BaseSort {
     /**
-     * 比较
+     * 比较 v 小于 w = true
      * @param v
      * @param w
      * @return

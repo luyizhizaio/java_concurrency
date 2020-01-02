@@ -1,19 +1,22 @@
 package com.kyrie.datastructure.struct;
 
 import java.util.Arrays;
+import java.util.Iterator;
+import java.util.Spliterator;
+import java.util.function.Consumer;
 
 /**
  * 顺序循环队列（循环队列防止假溢出）
  * Created by Kyrie on 2017/7/20.
  * 队列先进先出 （FIFO）
  */
-public class Queue<T> {
+public class Queue<T> implements Iterable<T> {
 
     private int DEFAULT_SIZE = 10;
 
     private int capacity;
 
-    private Object[] data; //数组保存元素
+    private T[] data; //数组保存元素
 
     private int front = 0;
 
@@ -22,7 +25,7 @@ public class Queue<T> {
     public Queue(){
 
         capacity = DEFAULT_SIZE;
-        data = new Object[capacity];
+        data = (T[])new Object[capacity];
     }
 
     public Queue(T element){
@@ -34,7 +37,7 @@ public class Queue<T> {
     public Queue(T element , int initSize){
 
         this.capacity = initSize;
-        data = new Object[capacity];
+        data =(T[]) new Object[capacity]; //不能创建泛型数组。创建Object数组强转成泛型数组。
         ++ rear;
         data[rear] = element;
     }
@@ -117,4 +120,18 @@ public class Queue<T> {
     }
 
 
+    @Override
+    public Iterator<T> iterator() {
+        return null;
+    }
+
+    @Override
+    public void forEach(Consumer<? super T> action) {
+
+    }
+
+    @Override
+    public Spliterator<T> spliterator() {
+        return null;
+    }
 }
