@@ -2,7 +2,7 @@ package com.kyrie.datastructure.sort;
 
 /**
  * Created by Kyrie on 2020/1/2.
- * 希尔排序:对插入排序的改进。
+ * 希尔排序:对插入排序的改进。使用插入排序让数组中间隔为h的元素有序，减小h至1，则数组有序。
  */
 public class Shell extends BaseSort {
 
