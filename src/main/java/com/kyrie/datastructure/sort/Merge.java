@@ -56,10 +56,10 @@ public class Merge extends BaseSort {
 
         for(int k = lo; k <= hi; k++){
 
-            if (i> mid) a[k] = aux[j++];
-            else if (j>hi) a[k] = aux[i++];
-            else if (less(aux[j],aux[i])) a[k] =aux[j++];
-            else a[k] = aux[i++];
+            if (i> mid) a[k] = aux[j++]; // i大于左边数组最大下标，说明左边数组空了，把右边数组插入原来数组
+            else if (j>hi) a[k] = aux[i++]; // j大于右边数组最大下标，说明右边数组空了，把左边数组插入原来数组
+            else if (less(aux[j],aux[i])) a[k] =aux[j++]; //判断 右边小于左边 取右边的元素
+            else a[k] = aux[i++]; //左边小于右边， 取左边
 
 
         }
