@@ -35,7 +35,7 @@ public class Merge extends BaseSort {
         sort(a,lo,mid);//排序左半边
         sort(a,mid+1, hi);//排序右半边
         merge(a,lo,mid,hi); //归并
-        show(a);
+//        show(a);
     }
 
 
