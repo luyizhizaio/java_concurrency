@@ -3,7 +3,7 @@ package com.kyrie.datastructure.sort;
 import com.kyrie.datastructure.utils.StdRandom;
 
 /**
- * 快排
+ * 快排: 使用一个切分元素；把小于切分元素的元素放在左边，把大于切分元素的元素放在右边
  * Created by tend on 2020/1/14.
  */
 public class Quick extends BaseSort {
