@@ -8,4 +8,11 @@ public class Quick3Way extends BaseSort {
 
 
 
+    public static void sort(Comparable){
+
+
+    }
+
+
+
 }
