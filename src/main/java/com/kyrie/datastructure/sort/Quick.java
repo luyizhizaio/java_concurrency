@@ -17,7 +17,7 @@ public class Quick extends BaseSort {
 
     public static void sort(Comparable[] a , int lo,int hi){
 
-        if(hi <= lo) return;
+        if(hi <= lo) return; //防止子数组为null
 
         int j = partition(a, lo,hi);//先切分
         sort(a,lo,j-1);//排序左半边
