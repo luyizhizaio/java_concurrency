@@ -28,6 +28,4 @@ public class InsertValueSearch {
       return mid;
     }
   }
-
-
 }
