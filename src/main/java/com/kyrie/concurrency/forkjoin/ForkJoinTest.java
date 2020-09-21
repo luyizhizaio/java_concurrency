@@ -1,6 +1,9 @@
 package com.kyrie.concurrency.forkjoin;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.ForkJoinTask;
 import java.util.concurrent.RecursiveTask;
 
 /**
@@ -10,14 +13,19 @@ public class ForkJoinTest {
 
     public static void main(String[] args) {
 
+        Instant start = Instant.now();
+        //create pool
         ForkJoinPool pool = new ForkJoinPool();
 
-        ForkJoinSumCalculate<Long> calculate = new ForkJoinSumCalculate(0,1000000);
+        ForkJoinTask<Long> calculate = new ForkJoinSumCalculate(0,1000000L);
 
-        pool.invoke(calculate);
+        //execute
+        Long num = pool.invoke(calculate);
 
+        System.out.println(num);
 
-
+        Instant end = Instant.now();
+        System.out.println(Duration.between(end, start).toMillis());
     }
 
 
@@ -60,7 +68,7 @@ class ForkJoinSumCalculate extends RecursiveTask<Long>{
             ForkJoinSumCalculate right = new ForkJoinSumCalculate(mid+1,end);
             left.fork();//拆分
 
-            return left.join() + right.join();
+            return left.join() + right.join();//合并
         }
 
     }
