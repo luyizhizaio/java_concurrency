@@ -32,10 +32,35 @@ public class BinaryTree<T> {
         this.root.infixOrder();
     }
 
+    /**
+     * 后序遍历
+     */
     public void postOrder(){
         this.root.postOrder();
     }
 
+    /**
+     * 先序查找
+     */
+    public Node<T> preOrderSearch(T value){
+
+        return this.root.preOrderSearch(value);
+    }
+
+    /**
+     * 中序查找
+     */
+    public Node<T> infixOrderSearch(T value){
+
+        return this.root.infixOrderSearch(value);
+
+    }
+
+
+    public Node<T> postOrderSearch(T value) {
+
+        return this.root.postOrderSearch(value);
+    }
 }
 
 //节点
@@ -123,10 +148,95 @@ class Node<T>{
     }
 
 
+    /**
+     * 先序查找
+     * @param value
+     * @return
+     */
+    public Node<T> preOrderSearch(T value) {
+
+        if(this.value.equals(value)) {
+            return this;
+        }
+
+        Node<T> resNode = null;
+        if(this.getLeft() !=null){
+            resNode = this.getLeft().preOrderSearch(value);
+        }
+
+        if(resNode !=null){
+            return resNode;
+        }
+
+        if(this.getRight() !=null){
+            resNode =  this.getRight().preOrderSearch(value);
+        }
+
+
+        return resNode;
+    }
+
+
+
     @Override
     public String toString() {
         return "Node{" +
                 "value=" + value +
                 '}';
+    }
+
+    /**
+     * 中序遍历
+     * @param value
+     * @return
+     */
+    public Node<T> infixOrderSearch(T value) {
+        Node<T> resNode =null;
+        if(this.getLeft()!=null){
+            resNode = this.getLeft().infixOrderSearch(value);
+        }
+
+        if(resNode !=null){
+            return resNode;
+        }
+
+        if(this.value.equals(value)){
+            return this;
+        }
+
+        if(this.getRight() !=null){
+            resNode = this.getRight().infixOrderSearch(value);
+        }
+        return resNode;
+    }
+
+    /**
+     * 后序遍历
+     * @param value
+     * @return
+     */
+    public Node<T> postOrderSearch(T value) {
+
+        Node<T> resNode = null;
+
+        if(this.getLeft()!=null){
+            resNode = this.getLeft().postOrderSearch(value);
+        }
+
+        if(resNode !=null){
+            return resNode;
+        }
+
+        if(this.getRight() != null){
+            resNode = this.getRight().postOrderSearch(value);
+        }
+
+        if(this.value.equals(value)){
+            return this;
+        }
+
+        return resNode;
+
+
     }
 }
