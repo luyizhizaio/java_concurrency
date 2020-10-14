@@ -61,6 +61,27 @@ public class BinaryTree<T> {
 
         return this.root.postOrderSearch(value);
     }
+
+    public void deleteNode2(T value) {
+
+        //TODO 未完成
+        if(this.root !=null){
+            if(this.root.getValue().equals(value)){
+                Node<T> left = this.root.getLeft();
+                Node<T> right = this.root.getRight();
+
+                if(left !=null) {
+                    this.setRoot(left);
+                }
+                else if(right !=null)this.setRoot(right);
+                else this.setRoot(null);
+
+            }else{
+                this.root.deleteNode2(value);
+            }
+        }
+
+    }
 }
 
 //节点
@@ -123,7 +144,7 @@ class Node<T>{
             this.getLeft().infixOrder();
         }
 
-        System.out.print(this.getValue() +" ");
+        System.out.print(this.getValue() + " ");
 
         if(this.getRight() !=null){
             this.getRight().infixOrder();
@@ -144,7 +165,7 @@ class Node<T>{
             this.getRight().postOrder();
         }
 
-        System.out.print(this.getValue() +" ");
+        System.out.print(this.getValue() + " ");
     }
 
 
@@ -238,5 +259,43 @@ class Node<T>{
         return resNode;
 
 
+    }
+
+    public void deleteNode2(T value) {
+
+        Node<T> left = this.getLeft();
+
+        if(left != null){
+            if(left.getValue().equals(value)){
+                Node<T> subLeft = left.getLeft();
+                Node<T> subRight = left.getRight();
+                if(subLeft != null){
+                    this.setLeft(subLeft);
+                }else if(subRight != null){
+                    this.setLeft(subRight);
+                }else{
+                    this.setLeft(null);
+                }
+            }else{
+                left.deleteNode2(value);
+            }
+        }
+
+        Node<T> right = this.getRight();
+        if(right !=null){
+            if(right.getValue().equals(value)){
+                Node<T> subLeft = left.getLeft();
+                Node<T> subRight = left.getRight();
+                if(subLeft != null){
+                    this.setLeft(subLeft);
+                }else if(subRight != null){
+                    this.setLeft(subRight);
+                }else{
+                    this.setLeft(null);
+                }
+            }else{
+                right.deleteNode2(value);
+            }
+        }
     }
 }

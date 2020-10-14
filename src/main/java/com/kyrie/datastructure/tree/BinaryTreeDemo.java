@@ -72,10 +72,40 @@ public class BinaryTreeDemo {
         Node<String> searchNode3 = bt.postOrderSearch("关胜");
         System.out.println(searchNode3);
 
-
-
     }
 
+    /**
+     * 删除节点：
+     l ）如果要删除的节点是非叶子节点，现在我们不希望将该非叶子节点为根节点的子树删除，需要指定规则，假如规定如下：
+     2 ）如果该非叶子节点 A 只有一个子节点 B ，则子节点 B 替代节点 A
+     3 ）如果该非叶子节点 A 有左子节点 B 和右子节点 C ，则让左子节点 B 替代节点 A 。
+     4 ）请大家思考，如何完成该删除功能，老师给出提示．（课后练习）
+     5 ）后面在讲解几叉排序树时，在给大家讲解具体的删除方法
+     */
+    @Test
+    public void deleteNode2(){
 
+        BinaryTree<String> bt = new BinaryTree<>();
+
+        Node<String> root = new Node<String>("宋江");
+        Node<String> node1 = new Node<String>("吴用");
+        Node<String> node2 = new Node<String>("卢俊");
+        Node<String> node3 = new Node<String>("关胜");
+        Node<String> node4 = new Node<String>("林冲");
+
+        node2.setLeft(node3);
+        node2.setRight(node4);
+
+        root.setLeft(node1);
+        root.setRight(node2);
+
+        bt.setRoot(root);
+
+        bt.preOrder();
+        System.out.println();
+        bt.deleteNode2("宋江");
+        bt.preOrder();
+
+    }
 
 }
