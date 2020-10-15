@@ -11,12 +11,12 @@ public class ThreadedBinaryTreeDemo {
     @Test
     public void threadedNode(){
 
-        Node<Integer> root = new Node<Integer>(1);
-        Node<Integer> node1 = new Node<Integer>(3);
-        Node<Integer> node2 = new Node<Integer>(6);
-        Node<Integer> node3 = new Node<Integer>(8);
-        Node<Integer> node4 = new Node<Integer>(10);
-        Node<Integer> node5 = new Node<Integer>(14);
+        ThreadedNode<Integer> root = new ThreadedNode<Integer>(1);
+        ThreadedNode<Integer> node1 = new ThreadedNode<Integer>(3);
+        ThreadedNode<Integer> node2 = new ThreadedNode<Integer>(6);
+        ThreadedNode<Integer> node3 = new ThreadedNode<Integer>(8);
+        ThreadedNode<Integer> node4 = new ThreadedNode<Integer>(10);
+        ThreadedNode<Integer> node5 = new ThreadedNode<Integer>(14);
 
         root.setLeft(node1);
         root.setRight(node2);
@@ -31,6 +31,22 @@ public class ThreadedBinaryTreeDemo {
         tbt.setRoot(root);
 
         tbt.threadedNodes();
+
+
+        System.out.println("索引化二叉树验证：");
+        //8
+        System.out.println(""+node3.getRight());
+
+        //10
+        System.out.println(node4.getLeft());
+        System.out.println(node4.getRight());
+
+        //14
+        System.out.println(node5.getLeft());
+        System.out.println(node5.getRight());
+
+        //遍历
+        System.out.println("中序遍历");
 
     }
 }
