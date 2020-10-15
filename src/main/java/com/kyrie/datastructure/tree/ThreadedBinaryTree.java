@@ -54,6 +54,17 @@ public class ThreadedBinaryTree<T> {
             threadedNodes(right);
         }
     }
+
+    /**
+     * 遍历线索化二叉树
+     */
+    public void threadedTraverse() {
+
+        if(this.getRoot() !=null){
+            this.root.infixOrder(root);
+        }
+
+    }
 }
 
 //节点
@@ -108,5 +119,32 @@ class ThreadedNode<T>{
 
     public void setRtag(int rtag) {
         this.rtag = rtag;
+    }
+
+    public void infixOrder(ThreadedNode<T> root) {
+
+        // ltag =0  left-> 左子树 ； ltag=1  left-> 前驱
+        // rtag = 0 right -> 右子树； rtag=1 right->后驱
+
+
+        int ltag = root.getLtag();
+
+        ThreadedNode<T> left1 = root.getLeft();
+        if(ltag ==0){
+
+        }
+
+
+
+    }
+
+
+    @Override
+    public String toString() {
+        return "ThreadedNode{" +
+                "value=" + value +
+                ", rtag=" + rtag +
+                ", ltag=" + ltag +
+                '}';
     }
 }
