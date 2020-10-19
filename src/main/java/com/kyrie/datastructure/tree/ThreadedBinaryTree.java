@@ -70,38 +70,47 @@ public class ThreadedBinaryTree<T> {
      * 先序索引化
      */
     public void preOrderthreadedNodes() {
-
-        if(this.root !=null){
-            this.preOrderthreadedNodes(root);
-        }
-
+        this.preOrderthreadedNodes(root);
     }
 
     private void preOrderthreadedNodes(ThreadedNode<T> root) {
 
-        System.out.print(root.getValue() + " ");
+        if(root !=null){
+            System.out.print(root.getValue() + " ");
+            //左子树为空，设置为前驱
+            if(root.getLeft() == null){
+                root.setLeft(pre);
+                root.setLtag(1);
+            }
+            //前驱的右子树为空，设置当前节点为后继。
+            if(pre !=null && pre.getRight()== null){
+                pre.setRight(root);
+                pre.setRtag(1);
+            }
 
-        ThreadedNode<T> left = root.getLeft();
-        if(left != null && root.getLtag() == 0){
+            pre = root;
 
-        }else{
-            root.setLeft(pre);
-            root.setLtag(1);
+            ThreadedNode<T> left = root.getLeft();
+            if(root.getLtag() == 0){
+                preOrderthreadedNodes(left);
+            }
+
+            ThreadedNode<T> right = root.getRight();
+            if(root.getRtag() == 0){
+                preOrderthreadedNodes(right);
+            }
+
         }
 
-        if(pre !=null && pre.getRight()== null){
-            pre.setRight(root);
-            pre.setRtag(1);
-        }
+    }
 
+    /**
+     * 先序遍历
+     */
+    public void preOrder() {
 
+        this.root.preOrder(root);
 
-
-
-        ThreadedNode<T> right = root.getRight();
-        if(right !=null && root.getRtag() == 0){
-            preOrderthreadedNodes(right);
-        }
 
     }
 }
@@ -197,5 +206,23 @@ class ThreadedNode<T>{
                 ", rtag=" + rtag +
                 ", ltag=" + ltag +
                 '}';
+    }
+
+
+    /**
+     * 先序遍历
+     */
+    public void preOrder(ThreadedNode<T> root) {
+
+        ThreadedNode<T> node =root;
+        while(node !=null){
+
+            System.out.print(node.getValue() +" ");
+            if(node.getLtag() == 0){
+                node = node.getLeft();
+            }else{
+                node = node.getRight();
+            }
+        }
     }
 }

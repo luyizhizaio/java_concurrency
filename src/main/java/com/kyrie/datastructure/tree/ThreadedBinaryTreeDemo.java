@@ -4,7 +4,7 @@ import org.junit.Test;
 
 /**
  * Created by tend on 2020/10/15.
- * 线索化二叉树案例
+ * 线索化二叉树案例:先序，中序，后序构建线索化二叉树。
  */
 public class ThreadedBinaryTreeDemo {
 
@@ -115,24 +115,31 @@ public class ThreadedBinaryTreeDemo {
         tbt.preOrderthreadedNodes();
 
 
-        System.out.println("索引化二叉树验证：");
+        System.out.println("\n索引化二叉树验证：");
         //8
-        System.out.println(""+node3.getRight());
+        System.out.println("8 后继:"+node3.getRight());
 
         //10
-        System.out.println(node4.getLeft());
-        System.out.println(node4.getRight());
+        System.out.println("10 前驱："+node4.getLeft());
+        System.out.println("10 后继："+node4.getRight());
 
         //6
-        System.out.println(node2.getLeft());
-        System.out.println(node2.getRight());
+        //System.out.println("6 front:" +node2.getLeft());
+        System.out.println("6 rear:" +node2.getRight());
 
         //14
-        System.out.println(node5.getLeft());
-        System.out.println(node5.getRight());
+        System.out.println("14 front:"+node5.getLeft());
+        System.out.println("14 rear:"+node5.getRight());
+
+
+        System.out.println("\n先序遍历：");
+        tbt.preOrder();
 
 
     }
+
+
+
 
 
 }
