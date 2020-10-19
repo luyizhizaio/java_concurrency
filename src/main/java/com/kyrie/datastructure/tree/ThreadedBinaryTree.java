@@ -34,12 +34,14 @@ public class ThreadedBinaryTree<T> {
 
         if(left !=null){
            infixOrderthreadedNodes(left);
-        }else{
-            root.setLeft(pre);
-            root.setLtag(1);
         }
 
         System.out.print(root.getValue() +" ");
+
+        if(left ==null){
+            root.setLeft(pre);
+            root.setLtag(1);
+        }
 
         if(pre !=null && pre.getRight() ==null){
             pre.setRight(root);
@@ -110,6 +112,49 @@ public class ThreadedBinaryTree<T> {
     public void preOrder() {
 
         this.root.preOrder(root);
+
+
+    }
+
+    /**
+     * 后序线索化
+     */
+    public void postOrderThreadedNode() {
+
+        this.postOrderThreadedNode(root);
+
+    }
+
+    private void postOrderThreadedNode(ThreadedNode<T> root) {
+
+
+        if(root !=null){
+
+            ThreadedNode<T> left = root.getLeft();
+            if(left!=null){
+                postOrderThreadedNode(left);
+            }
+
+            ThreadedNode<T> right = root.getRight();
+            if(right!=null){
+                postOrderThreadedNode(right);
+            }
+
+            System.out.print(root.getValue() +" ");
+            if(root.getLeft() == null){
+                root.setLeft(pre);
+                root.setLtag(1);
+            }
+
+            if(pre !=null && pre.getRight() ==null){
+                pre.setRight(root);
+                pre.setRtag(1);
+            }
+
+            pre = root;
+        }
+
+
 
 
     }
