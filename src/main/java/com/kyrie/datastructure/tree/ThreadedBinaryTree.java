@@ -17,23 +17,23 @@ public class ThreadedBinaryTree<T> {
     }
 
     /**
-     * 线索化二叉树
+     * 中序线索化二叉树
      */
-    public void threadedNodes(){
+    public void infixOrderthreadedNodes(){
 
         if(this.root != null){
-            this.threadedNodes(root);
+            this.infixOrderthreadedNodes(root);
         }
     }
 
     //8 3 10 1 14 6
-    private void threadedNodes(ThreadedNode<T> root) {
+    private void infixOrderthreadedNodes(ThreadedNode<T> root) {
 
         //左指向前驱
         ThreadedNode<T> left = root.getLeft();
 
         if(left !=null){
-           threadedNodes(left);
+           infixOrderthreadedNodes(left);
         }else{
             root.setLeft(pre);
             root.setLtag(1);
@@ -51,17 +51,56 @@ public class ThreadedBinaryTree<T> {
         //右指向后继
         ThreadedNode<T> right = root.getRight();
         if(right != null){
-            threadedNodes(right);
+            infixOrderthreadedNodes(right);
         }
     }
 
     /**
-     * 遍历线索化二叉树
+     * 遍历中序线索化二叉树
      */
-    public void threadedTraverse() {
+    public void infixOrder() {
 
         if(this.getRoot() !=null){
             this.root.infixOrder(root);
+        }
+
+    }
+
+    /**
+     * 先序索引化
+     */
+    public void preOrderthreadedNodes() {
+
+        if(this.root !=null){
+            this.preOrderthreadedNodes(root);
+        }
+
+    }
+
+    private void preOrderthreadedNodes(ThreadedNode<T> root) {
+
+        System.out.print(root.getValue() + " ");
+
+        ThreadedNode<T> left = root.getLeft();
+        if(left != null && root.getLtag() == 0){
+
+        }else{
+            root.setLeft(pre);
+            root.setLtag(1);
+        }
+
+        if(pre !=null && pre.getRight()== null){
+            pre.setRight(root);
+            pre.setRtag(1);
+        }
+
+
+
+
+
+        ThreadedNode<T> right = root.getRight();
+        if(right !=null && root.getRtag() == 0){
+            preOrderthreadedNodes(right);
         }
 
     }
@@ -126,15 +165,27 @@ class ThreadedNode<T>{
         // ltag =0  left-> 左子树 ； ltag=1  left-> 前驱
         // rtag = 0 right -> 右子树； rtag=1 right->后驱
 
+        //定义变量存储当前遍历的节点，从root开始
+        ThreadedNode<T> node=root;
 
-        int ltag = root.getLtag();
+        while(node !=null){
 
-        ThreadedNode<T> left1 = root.getLeft();
-        if(ltag ==0){
+            //循环找到ltag==1节点，为按照索引化处理后的有效节点
+            while(node.getLtag() == 0){
+                node = node.getLeft();
+            }
+            //输出
+            System.out.print(node.getValue() + " ");
 
+            //当前节点的右指针指向后继节点，一直输出
+            while(node.getRtag() ==1){
+                node = node.getRight();
+                System.out.print(node.getValue() + " ");
+            }
+
+            //替换当前遍历的节点
+            node =node.getRight();
         }
-
-
 
     }
 
