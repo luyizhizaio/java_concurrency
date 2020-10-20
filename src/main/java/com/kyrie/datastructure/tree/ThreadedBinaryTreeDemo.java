@@ -181,6 +181,9 @@ public class ThreadedBinaryTreeDemo {
         System.out.println("14 front:"+node5.getLeft());
         System.out.println("14 rear:"+node5.getRight());
 
+        //后序遍历
+        tbt.postOrder();
+
     }
 
 

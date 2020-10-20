@@ -132,11 +132,13 @@ public class ThreadedBinaryTree<T> {
 
             ThreadedNode<T> left = root.getLeft();
             if(left!=null){
+                left.setParent(root);
                 postOrderThreadedNode(left);
             }
 
             ThreadedNode<T> right = root.getRight();
             if(right!=null){
+                right.setParent(root);
                 postOrderThreadedNode(right);
             }
 
@@ -158,6 +160,14 @@ public class ThreadedBinaryTree<T> {
 
 
     }
+
+    /**
+     * 后序遍历
+     */
+    public void postOrder() {
+        this.root.postOrder(root);
+
+    }
 }
 
 //节点
@@ -169,6 +179,9 @@ class ThreadedNode<T>{
 
     private int ltag; // ltag为0时指向该结点的左孩子，为1时指向该结点的前驱
     private int rtag; // rtag为0时指向该结点的右孩子，为1时指向该结点的后继
+
+    //双亲节点,后序线索二叉树需要用到
+    public ThreadedNode<T> parent = null;
 
     public ThreadedNode(T value) {
         this.value = value;
@@ -212,6 +225,14 @@ class ThreadedNode<T>{
 
     public void setRtag(int rtag) {
         this.rtag = rtag;
+    }
+
+    public ThreadedNode<T> getParent() {
+        return parent;
+    }
+
+    public void setParent(ThreadedNode<T> parent) {
+        this.parent = parent;
     }
 
     public void infixOrder(ThreadedNode<T> root) {
@@ -261,7 +282,6 @@ class ThreadedNode<T>{
 
         ThreadedNode<T> node =root;
         while(node !=null){
-
             System.out.print(node.getValue() +" ");
             if(node.getLtag() == 0){
                 node = node.getLeft();
@@ -269,5 +289,49 @@ class ThreadedNode<T>{
                 node = node.getRight();
             }
         }
+    }
+
+    /**
+     * 后序遍历
+     * @param root
+     */
+    public void postOrder(ThreadedNode<T> root) {
+        ThreadedNode<T> node = root;
+        ThreadedNode<T> pre = null;
+        while (node != null) {
+            while(node.getLtag()==0){
+                node = node.getLeft();
+            }
+            System.out.print(node.getValue() +" ");
+
+            while(node.getRtag() == 1){
+                pre = node;
+                node = node.getRight();
+                System.out.print(node.getValue() +" ");
+            }
+
+            //如果p没有后继,判断他是不是根节点,若是根,访问根,并且退出遍历.根据后续遍历的原则我们得知,
+            //根节点就是最后一个节点
+            if(node == root){
+                System.out.print(node.getValue() + " ");
+                break;
+            }
+
+            //若p不是根,且p不为null的情况下,如果p.rightNode == pre的话,
+            // 代表着以当前节点p的左子树及其相关后继已经遍历完毕,
+            //返回至p的双亲节点
+
+            while(node !=null && node.getRight() == pre){
+                System.out.print(node.getValue() + " ");
+                pre = node;
+                node = node.parent;
+            }
+
+            //如果p有右子树,遍历其右子树
+            if(node !=null && node.getRtag() == 0){
+                node = node.getRight();
+            }
+        }
+
     }
 }
