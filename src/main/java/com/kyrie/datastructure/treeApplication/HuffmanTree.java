@@ -1,13 +1,10 @@
 package com.kyrie.datastructure.treeApplication;
 
 import java.util.*;
-
-
 /**
  * Created by tend on 2020/10/22.
  */
 public class HuffmanTree {
-
     public static void main(String[] args) {
 
         int[] arr ={13,7,8,3,29,6,1};
@@ -15,18 +12,12 @@ public class HuffmanTree {
 
         System.out.println(huffmanTree);
 
-
         preOrder(huffmanTree);
-
     }
 
     private static void preOrder(Node huffmanTree) {
-
         huffmanTree.preOrder();
-
     }
-
-
     public static Node  createHuffmanTree(int[] arr){
         /**对于给定的有各自权值的 n 个结点，构建哈夫曼树有一个行之有效的办法：
          1.在 n 个权值中选出两个最小的权值，对应的两个结点组成一个新的二叉树，且新二叉树的根结点的权值为左右孩子权值的和；
@@ -58,9 +49,6 @@ public class HuffmanTree {
         return nodes.get(0);
 
     }
-
-
-
 }
 
 
@@ -121,9 +109,6 @@ class Node implements Comparable<Node>{
         if(this.getRight() != null){
             this.getRight().preOrder();
         }
-
-
-
     }
 
     @Override
