@@ -37,11 +37,11 @@ public class HuffmanTree {
             Collections.sort(nodes);
             Node first = nodes.remove(0);
             Node second = nodes.remove(0);
-            int parentValue = first.getValue() + second.getValue();
+            int parentValue = first.weight + second.weight;
             Node parentNode = new Node(parentValue);
 
-            parentNode.setLeft(first);
-            parentNode.setRight(second);
+            parentNode.left = first;
+            parentNode.right = second;
             nodes.add(parentNode);
 
         }
@@ -54,65 +54,50 @@ public class HuffmanTree {
 
 class Node implements Comparable<Node>{
 
-    private int value;
+    Byte data; //存放数据的ascll，
 
-    private Node left;
+    int weight;
 
-    private Node right;
+    Node left;
+
+    Node right;
 
     public Node(){
 
     }
 
-    public Node(int value) {
-        this.value = value;
+    public Node(int weight) {
+        this.weight = weight;
     }
 
-    public int getValue() {
-        return value;
+    public Node(Byte data, int weight) {
+        this.data = data;
+        this.weight = weight;
     }
 
-    public void setValue(int value) {
-        this.value = value;
-    }
-
-    public Node getLeft() {
-        return left;
-    }
-
-    public void setLeft(Node left) {
-        this.left = left;
-    }
-
-    public Node getRight() {
-        return right;
-    }
-
-    public void setRight(Node right) {
-        this.right = right;
-    }
-
-    @Override
-    public String toString() {
-        return "Node{" +
-                "value=" + value +
-                '}';
-    }
 
     public void preOrder() {
 
-        System.out.print(this.getValue() +" ");
-        if(this.getLeft() !=null){
-            this.getLeft().preOrder();
+        System.out.print(this.weight +" ");
+        if(this.left !=null){
+            this.left.preOrder();
         }
 
-        if(this.getRight() != null){
-            this.getRight().preOrder();
+        if(this.right != null){
+            this.right.preOrder();
         }
     }
 
     @Override
     public int compareTo(Node o) {
-        return this.getValue() - o.getValue();
+        return this.weight - o.weight;
+    }
+
+    @Override
+    public String toString() {
+        return "Node{" +
+                "data=" + data +
+                ", weight=" + weight +
+                '}';
     }
 }
