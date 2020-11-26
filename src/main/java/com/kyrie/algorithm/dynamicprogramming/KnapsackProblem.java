@@ -1,7 +1,7 @@
 package com.kyrie.algorithm.dynamicprogramming;
 
 /**
- * 动态规划：背包问题
+ * 动态规划：0-1背包问题
  */
 public class KnapsackProblem {
 
@@ -32,17 +32,11 @@ public class KnapsackProblem {
 
             for (int j = 1; j < v[0].length; j++) { //j为可放的容量
 
-                if(w[i-1] > j){
+                if(w[i-1] > j){//可放容量小于物品容量，矩阵下一个格子就等于上一个格子的值。
                     v[i][j] = v[i -1][j];
-                } else {
-                    int x =val[i-1]+v[i-1][j-w[i-1]];
-                    int xx = j-w[i-1];
-                    System.out.println("j-w[i-1]:"+xx);
-                    System.out.println("v[i-1][j]:"+v[i-1][j] +"; val[i-1]+v[i-1][j-w[i-1]] :" + x);
+                } else { //可用容量大于物品容量，
 
-
-
-                    if(v[i-1][j] < val[i-1]+v[i-1][j-w[i-1]]){
+                    if(v[i-1][j] < val[i-1]+v[i-1][j-w[i-1]]){ //j-w[i-1] 表示去掉i-1商品剩余可用容量
                         v[i][j] = val[i-1]+v[i-1][j-w[i-1]];
                         path[i][j] = 1;
                     }else{
