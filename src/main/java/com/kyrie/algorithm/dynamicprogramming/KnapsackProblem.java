@@ -27,15 +27,22 @@ public class KnapsackProblem {
             v[0][i] = 0;//第一行设置为0
         }
 
-
-        for (int i = 1; i < v.length; i++) {  //i
+        //在矩阵中放入物品
+        for (int i = 1; i < v.length; i++) {  //i放入的商品编号
 
             for (int j = 1; j < v[0].length; j++) { //j为可放的容量
 
                 if(w[i-1] > j){
                     v[i][j] = v[i -1][j];
                 } else {
-                    if(v[i-1][j]<val[i-1]+v[i-1][j-w[i-1]]){
+                    int x =val[i-1]+v[i-1][j-w[i-1]];
+                    int xx = j-w[i-1];
+                    System.out.println("j-w[i-1]:"+xx);
+                    System.out.println("v[i-1][j]:"+v[i-1][j] +"; val[i-1]+v[i-1][j-w[i-1]] :" + x);
+
+
+
+                    if(v[i-1][j] < val[i-1]+v[i-1][j-w[i-1]]){
                         v[i][j] = val[i-1]+v[i-1][j-w[i-1]];
                         path[i][j] = 1;
                     }else{
