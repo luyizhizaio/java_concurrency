@@ -38,7 +38,9 @@ public class HorseChessBoard {
 
         Point p1 = new Point();
 
-        if()
+//        if()
+
+        return ps;
 
     }
 
